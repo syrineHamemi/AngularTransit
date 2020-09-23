@@ -24,16 +24,13 @@
                 <ul class="dropdown-menu pull-right" role="menu">
                     <li>
                         <a href="#">
-                            <i class="icon-bell"></i> Action</a>
+                            <i class="icon-bell"></i> Ajouter Commande</a>
                     </li>
                     <li>
                         <a href="#">
                             <i class="icon-shield"></i> Another action</a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="icon-user"></i> Something else here</a>
-                    </li>
+                   
                     <li class="divider"> </li>
                     <li>
                         <a href="#">
@@ -68,84 +65,59 @@
                             </tr>
                         </thead>
                         <tbody>
+                          <tr  >
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                           
+                            <td><button  class="btn btn-danger" (click)="openModalDelete(template1)">Delete</button>
+                              <button type="button" class="btn btn-primary" (click)="openModal(template)">Details</button>
+                            </td>
+                        </tr>
                             <tr *ngFor="let c of commande ">
                                 <td>{{c.id}}</td>
                                 <td>{{c.numeroCmd}}</td>
                                 <td>{{c.date}}</td>
                                
                                 <td><button  class="btn btn-danger">Delete</button>
-                                    <button  class="btn btn-info" style="margin-left: 10px">Details</button>
+                                    <button  class="btn btn-info" (click)="open(mymodal)" style="margin-left: 10px">Details</button>
                                 </td>
                             </tr>
-                         
-                           
-                          
-                           
-                        </tbody>
+                      </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
     
-
-    <ng-template #content1 let-c="close" let-d="dismiss">
-        <div id="safe"  class="modal-header" >
-          <h4 class="modal-title">Modifier un fournisseur</h4>
-          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      <form  #f="ngForm"  >
-        <div class="modal-body">
-          <div class="input-group mb-3">
-            <span class="input-group-addon">
-            <i class="ft-mail"></i>
-            </span>
-            <input type="email" class="form-control"  name="email" id="email"   ngModel="{{datauser.email}}" required email [(ngModel)]="user.email" >
-          </div>  
-          <div class="input-group mb-3">
-            <span class="input-group-addon">
-            <i class="ft-phone-call"></i>
-            </span>
-            <input type="tel" class="form-control" name="numTel" id="numTel" maxlength="8"  pattern="[0-9]" ngModel="{{datauser.numTel}}" required [(ngModel)]="user.numTel" value="numTel" >
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-addon">
-            <i class="icon-map"></i>
-            </span>
-            <input type="text" class="form-control" name="adresse" id="adresse"  ngModel="{{datauser.adresse}}" required [(ngModel)]="user.adresse" value="adresse">
-          </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Fermer</button>
-          <button type="button" class="btn btn-outline-green" (click)="update(f.value)">Modifier</button>
-        </div>
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      </form>
-      </ng-template>
-       <!-- Modal detail user  -->
-       <ng-template #contentuser let-c="close" let-d="dismiss">
-        <div class="modal-header">
-          <h4 class="modal-title">Détails d'un fournisseur </h4>
-          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <table >
-            <tr><td><i>Nom:</i></td><td>{{detailuser.nom}}</td></tr>
-            <tr><td><i>Prénom:</i></td><td>{{detailuser.prenom}}</td></tr>
-            <tr><td><i>Email:</i></td><td>{{detailuser.email}}</td></tr>
-            <tr><td><i>N°téléphone:</i></td><td>{{detailuser.numTel}}</td></tr>
-            <tr><td><i>Adresse:</i></td><td>{{detailuser.adresse}}</td></tr>
-            <tr><td><i>Date d'inscription:</i></td><td>{{detailuser.dateAjout}}</td></tr>
-            <tr><td><i>Rôle:</i></td><td>{{detailuser.role}}</td></tr>
-          </table>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Fermer</button>
-      
-        </div>
-      </ng-template>
+      <div class="modal-body">
+        This is a modal.
+      </div>
+    </ng-template>
+
+
+
+    <ng-template #template1>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <p>Do you want to confirm?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+        <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+      </div>
+    </ng-template>
+
+  
 
 <router-outlet></router-outlet>

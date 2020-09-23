@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef  } from '@angular/core';
 import{ commande } from 'src/app/commande/commande';
-import {NgbModal, NgbModalRef ,ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {CommandeService} from 'src/app/commande/commande.service'
 @Component({
   selector: 'app-commande',
@@ -10,11 +10,11 @@ import {CommandeService} from 'src/app/commande/commande.service'
 export class CommandeComponent implements OnInit {
   commande:commande[];
   datacommande:any;
-  modalRef :  NgbModalRef ;
   closeResult:string;
   detailcommande:any;
+  modalRef: BsModalRef;
 
-  constructor(private commabdeService :CommandeService) { }
+  constructor(private commabdeService :CommandeService,private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.reloadData();
@@ -27,5 +27,15 @@ export class CommandeComponent implements OnInit {
    
      }
 
+     openModal(template: TemplateRef<any>) {
+      this.modalRef = this.modalService.show(template);
+    }
+    
+    openModalDelete(template: TemplateRef<any>) {
+      this.modalRef = this.modalService.show(
+        template,
+        Object.assign({}, { class: 'gray modal-lg' })
+      );
+    }
 
 }

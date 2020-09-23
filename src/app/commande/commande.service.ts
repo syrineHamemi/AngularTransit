@@ -13,11 +13,8 @@ export class CommandeService {
 
   }
 
-  
   public findAll(): Observable<commande[]> {
-
-    console.log("coucou");
-     console.log(this.http.get<commande[]>(this.commandeurl));
+ 
     return this.http.get<commande[]>(this.commandeurl);
   }
 }

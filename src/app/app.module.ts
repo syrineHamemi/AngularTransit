@@ -8,6 +8,7 @@ import { LivraisonComponent } from './livraison/livraison.component';
 import { TransporteurComponent } from './transporteur/transporteur.component';
 import { FactureComponent } from './facture/facture.component';
 import {HttpClientModule} from '@angular/common/http'
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 //import { AuthGuard } from './auth.guard';
 
@@ -23,6 +24,8 @@ import {HttpClientModule} from '@angular/common/http'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ModalModule.forRoot(),
+    
   ],
   
   providers: [],
